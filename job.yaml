@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: parent-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: job-test
+        image: emruzhossain/job-test
+        command: ["/home/job/offb","createJob"]
+      restartPolicy: OnFailure
+  backoffLimit: 4
